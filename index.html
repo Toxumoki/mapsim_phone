@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>視覚シミュレーター</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- ✅ キャンバス（左側） -->
+  <div id="container">
+    <canvas id="visionCanvas"></canvas>
+  </div>
+  <!-- ✅ 右側パネル -->
+  <div id="sidePanel">
+    <div id="controls">
+      <!-- ✅ タブメニュー -->
+      <div id="tabMenu">
+        <button class="tab active" data-target="editPanel">編集モード</button>
+        <button class="tab" data-target="shootingPanel">射線管理モード</button>
+      </div>
+
+      <!-- ✅ 編集モードパネル -->
+      <div id="editPanel" class="tabContent active">
+        <div>
+          X: <input type="number" id="cellX" value="8" min="0" max="16" />
+          Y: <input type="number" id="cellY" value="18" min="0" max="36" />
+          角度: <input type="number" id="triangleAngle" value="0" />
+          形状:
+          <select id="shapeType">
+            <option value="small_triangle">小三角形</option>
+            <option value="big_triangle">大三角形</option>
+            <option value="rhombus">ひし形</option>
+            <option value="trapezoid">台形</option>
+          </select>
+          <label>基準頂点:</label>
+          <select id="vertexAnchor">
+            <option value="topLeft">上左</option>
+            <option value="topRight">上右</option>
+            <option value="bottomLeft">下左</option>
+            <option value="bottomRight">下右</option>
+          </select>
+          <button id="addObstacleBtn">追加</button>
+        </div>
+
+        <div>
+          回転角: <input type="number" id="rotateAngleInput" value="30" />
+          <button id="applyRotationBtn">回転適用</button>
+          <span id="selectedLabel">選択中: なし</span>
+          <button id="clearObstaclesBtn">バリケオールクリア</button>
+          <button id="mirrorObstaclesBtn">反転</button>
+        </div>
+
+        <ul id="obstacleList"></ul>
+      </div>
+
+      <!-- ✅ 射線管理モードパネル -->
+      <div id="shootingPanel" class="tabContent">
+        <label><input type="checkbox" id="showFOV"> FOV表示</label>
+        <label><input type="checkbox" id="showLines"> 射線表示</label>
+        <button id="addEnemyBtn">敵を追加</button>
+        <button id="addAllyBtn">味方を追加</button>
+        <button id="deleteCharacterBtn" disabled>選択キャラクター削除</button>
+      </div>
+    </div>
+    </div>
+    <!-- ✅ スマホ用十字ボタン（画面下に追加） -->
+    <div id="mobileControls" class="mobile-only">
+      <button id="btnUp">⬆</button>
+      <div>
+        <button id="btnLeft">⬅</button>
+        <button id="btnDown">⬇</button>
+        <button id="btnRight">➡</button>
+      </div>
+    </div>
+
+
+
+  <script src="script.js"></script>
+</body>
+</html>
