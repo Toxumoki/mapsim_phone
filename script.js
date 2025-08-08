@@ -685,21 +685,6 @@ function animate() {
   }
 
 
-  // ピンチズーム禁止
-document.addEventListener('gesturestart', function (e) {
-    e.preventDefault();
-});
-
-// ダブルタップズーム禁止
-let lastTouchEnd = 0;
-document.addEventListener('touchend', function (e) {
-    let now = new Date().getTime();
-    if (now - lastTouchEnd <= 300) {
-        e.preventDefault();
-    }
-    lastTouchEnd = now;
-}, false);
-
 // 二本指操作禁止（ピンチ検出）
 document.addEventListener('touchmove', function (e) {
     if (e.touches.length > 1) {
@@ -707,6 +692,33 @@ document.addEventListener('touchmove', function (e) {
     }
 }, { passive: false });
 
+// ===== ピンチズーム・スクロール防止 =====
+document.addEventListener('gesturestart', e => e.preventDefault());
+
+document.addEventListener('touchend', e => {
+    const now = new Date().getTime();
+    if (now - lastTouchEnd <= 300) e.preventDefault();
+    lastTouchEnd = now;
+}, false);
+
+document.addEventListener('touchmove', e => {
+    if (e.touches.length > 1) e.preventDefault();
+}, { passive: false });
+
+// ===== 安全なvw/vh計算（iOS Safariバグ対策）=====
+function setViewportUnits() {
+    let vw = window.innerWidth * 0.01;
+    let vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vw', `${vw}px`);
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+}
+
+// 初期化
+setViewportUnits();
+
+// 画面回転やリサイズ時も更新
+window.addEventListener('resize', setViewportUnits);
+window.addEventListener('orientationchange', setViewportUnits);
 
   // --- 描画処理 ---
   drawGrid(); // グリッド描画

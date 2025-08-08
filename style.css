@@ -149,17 +149,15 @@ input[type="checkbox"] {
   gap: 10px;
 }
 
-/* ページ全体をスマホ画面にフィットさせる */
 html, body {
     margin: 0;
     padding: 0;
     width: 100%;
     height: 100%;
-    overflow: hidden; /* スクロール禁止 */
-    touch-action: none; /* タッチ操作無効（ズーム・スクロール防止） */
+    overflow: hidden; 
+    touch-action: none;
 }
 
-/* コンテンツ領域 */
 .container {
     width: 100%;
     height: 100%;
@@ -168,11 +166,12 @@ html, body {
     align-items: center;
     background-color: #222;
     color: white;
-    font-size: 5vw; /* 画面幅に応じて文字サイズ可変 */
+    font-size: calc(var(--vw, 1vw) * 5); /* JSで計算された安全なvw */
     text-align: center;
-    padding: 2vw;
     box-sizing: border-box;
+    padding: 2%;
 }
+
 
 /* 小さいスマホ用の微調整 */
 @media (max-width: 480px) {
