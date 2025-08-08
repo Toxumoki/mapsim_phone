@@ -172,6 +172,11 @@ html, body {
     padding: 2%;
 }
 
+.field {
+display: flex;
+}
+
+
 
 /* 小さいスマホ用の微調整 */
 @media (max-width: 480px) {

@@ -10,18 +10,20 @@
 </head>
 
 <body>
+
+  <div id="controls">
+  <!-- ✅ タブメニュー -->
+  <div id="tabMenu">
+    <button class="tab active" data-target="editPanel">編集モード</button>
+    <button class="tab" data-target="shootingPanel">射線管理モード</button>
+  </div>
+  <div class="field">
     <!-- ✅ キャンバス（左側） -->
   <div id="container">
     <canvas id="visionCanvas"></canvas>
   </div>
   <!-- ✅ 右側パネル -->
   <div id="sidePanel">
-    <div id="controls">
-      <!-- ✅ タブメニュー -->
-      <div id="tabMenu">
-        <button class="tab active" data-target="editPanel">編集モード</button>
-        <button class="tab" data-target="shootingPanel">射線管理モード</button>
-      </div>
 
       <!-- ✅ 編集モードパネル -->
       <div id="editPanel" class="tabContent active">
@@ -67,6 +69,8 @@
       </div>
     </div>
     </div>
+    </div>
+    
     <!-- ✅ スマホ用十字ボタン（画面下に追加） -->
     <div id="mobileControls" class="mobile-only">
       <button id="btnUp">⬆</button>
