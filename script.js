@@ -684,6 +684,30 @@ function animate() {
     }
   }
 
+
+  // ピンチズーム禁止
+document.addEventListener('gesturestart', function (e) {
+    e.preventDefault();
+});
+
+// ダブルタップズーム禁止
+let lastTouchEnd = 0;
+document.addEventListener('touchend', function (e) {
+    let now = new Date().getTime();
+    if (now - lastTouchEnd <= 300) {
+        e.preventDefault();
+    }
+    lastTouchEnd = now;
+}, false);
+
+// 二本指操作禁止（ピンチ検出）
+document.addEventListener('touchmove', function (e) {
+    if (e.touches.length > 1) {
+        e.preventDefault();
+    }
+}, { passive: false });
+
+
   // --- 描画処理 ---
   drawGrid(); // グリッド描画
 
