@@ -3,19 +3,18 @@
 
 <head>
   <meta charset="UTF-8">
-  <!-- ✅ スマホ画面にフィットし、ズーム禁止 -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<!-- スマホ画面にフィットし、ズームを禁止 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>視覚シミュレーター</title>
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-  <!-- ✅ キャンバス（左側） -->
+    <!-- ✅ キャンバス（左側） -->
   <div id="container">
     <canvas id="visionCanvas"></canvas>
   </div>
-
-  <!-- ✅ 右側パネル（UI） -->
+  <!-- ✅ 右側パネル -->
   <div id="sidePanel">
     <div id="controls">
       <!-- ✅ タブメニュー -->
@@ -67,17 +66,18 @@
         <button id="deleteCharacterBtn" disabled>選択キャラクター削除</button>
       </div>
     </div>
-  </div>
-
-  <!-- ✅ モバイル用十字ボタン（常時表示、キャンバス下中央） -->
-  <div id="mobileControls" class="mobile-only">
-    <button id="btnUp">⬆</button>
-    <div>
-      <button id="btnLeft">⬅</button>
-      <button id="btnDown">⬇</button>
-      <button id="btnRight">➡</button>
     </div>
-  </div>
+    <!-- ✅ スマホ用十字ボタン（画面下に追加） -->
+    <div id="mobileControls" class="mobile-only">
+      <button id="btnUp">⬆</button>
+      <div>
+        <button id="btnLeft">⬅</button>
+        <button id="btnDown">⬇</button>
+        <button id="btnRight">➡</button>
+      </div>
+    </div>
+
+
 
   <script src="script.js"></script>
 </body>
