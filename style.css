@@ -33,6 +33,7 @@ body {
   padding: 10px;
   overflow-y: auto;     /* ✅ スクロール可能 */
   z-index: 10;
+  box-sizing: border-box;
 }
 
 /* === タブメニュー === */
@@ -120,14 +121,14 @@ input[type="checkbox"] {
   transform: scale(1.2); /* 少し大きく */
 }
 
-/* ✅ スマホ用操作UI（十字ボタン） */
+/* ✅ モバイル操作UI（十字ボタン） - 常時表示 & キャンバス下中央固定 */
 #mobileControls {
   position: fixed;
   bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 20;
-  display: none;
+  display: flex; /* ✅ 常時表示に変更 */
   flex-direction: column;
   align-items: center;
   gap: 10px;
@@ -172,16 +173,37 @@ html, body {
     padding: 2%;
 }
 
-
 /* 小さいスマホ用の微調整 */
 @media (max-width: 480px) {
+    #sidePanel {
+        min-width: 150px; /* ✅ スマホ時はパネル幅縮小 */
+        width: 150px;
+    }
+    .tab {
+        font-size: 16px; /* ✅ タップしやすいサイズ */
+        height: 44px;    /* ✅ 最小タップ領域確保 */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
     .container {
         font-size: 6vw;
     }
 }
 
 /* タブレットや大きめのスマホ向け調整 */
-@media (min-width: 768px) {
+@media (min-width: 481px) and (max-width: 768px) {
+    #sidePanel {
+        min-width: 180px;
+        width: 180px;
+    }
+    .tab {
+        font-size: 15px;
+        height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
     .container {
         font-size: 3vw;
     }

@@ -637,6 +637,7 @@ function isPointInPolygon(pt, poly) {
 }
 
 // ✅ 射線管理モードのとき、スマホ画面なら十字ボタン表示
+/*
 function updateMobileControlsUI() {
   const mc = document.getElementById("mobileControls");
   if (window.innerWidth <= 768000000 && !isEditMode) {
@@ -644,6 +645,12 @@ function updateMobileControlsUI() {
   } else {
     mc.style.display = "none";
   }
+}
+  */
+// ✅ モバイルUI制御（常時表示に変更）
+function updateMobileControlsUI() {
+  const mc = document.getElementById("mobileControls");
+  mc.style.display = "flex"; // 常に表示
 }
 
 
@@ -712,6 +719,24 @@ function setViewportUnits() {
     document.documentElement.style.setProperty('--vw', `${vw}px`);
     document.documentElement.style.setProperty('--vh', `${vh}px`);
 }
+
+// ==== ズーム禁止強化 ====
+document.addEventListener('gesturestart', e => e.preventDefault());
+document.addEventListener('gesturechange', e => e.preventDefault());
+document.addEventListener('gestureend', e => e.preventDefault());
+
+document.addEventListener('touchmove', e => {
+  if (e.touches.length > 1) {
+    e.preventDefault();
+  }
+}, { passive: false });
+
+let lastTouchEnd = 0;
+document.addEventListener('touchend', e => {
+  const now = Date.now();
+  if (now - lastTouchEnd <= 300) e.preventDefault();
+  lastTouchEnd = now;
+}, false);
 
 // 初期化
 setViewportUnits();
