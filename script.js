@@ -387,7 +387,7 @@ window.addEventListener("DOMContentLoaded", () => {
     }
 
     updateDeleteBtnUI();
-    updateMobileControlsUI(); // ✅ モバイルUI制御
+    //updateMobileControlsUI(); // ✅ モバイルUI制御
   });
 });
 
@@ -639,7 +639,7 @@ function isPointInPolygon(pt, poly) {
 // ✅ 射線管理モードのとき、スマホ画面なら十字ボタン表示
 function updateMobileControlsUI() {
   const mc = document.getElementById("mobileControls");
-  if (window.innerWidth <= 768000000 && !isEditMode) {
+  if (window.innerWidth <= 768000000) {
     mc.style.display = "flex";
   } else {
     mc.style.display = "none";
