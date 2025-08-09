@@ -175,19 +175,3 @@ html, body {
 .field {
 display: flex;
 }
-
-
-
-/* 小さいスマホ用の微調整 */
-@media (max-width: 480px) {
-    .container {
-        font-size: 6vw;
-    }
-}
-
-/* タブレットや大きめのスマホ向け調整 */
-@media (min-width: 768px) {
-    .container {
-        font-size: 3vw;
-    }
-}
